@@ -1,0 +1,11 @@
+name: 'Isabelle-action'
+description: 'Isabelle image with prebuilt HOL'
+inputs:
+  args:
+    description: 'Isabelle arguments'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.args }}
