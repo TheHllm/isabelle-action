@@ -12,4 +12,6 @@ RUN curl https://isabelle.in.tum.de/dist/Isabelle2020_linux.tar.gz > Isabelle202
   Isabelle2020/bin/isabelle build -v -o system_heaps -b HOL && \
   rm Isabelle2020_linux.tar.gz
 
-ENTRYPOINT ["/Isabelle2020/bin/isabelle"]
+COPY entrypoint.sh /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
