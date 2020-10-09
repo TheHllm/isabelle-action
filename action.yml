@@ -8,13 +8,9 @@ inputs:
     description: 'path to save to/load from Isabelle session heap'
     required: false
 runs:
-  using: 'composite'
-  steps:
-  - uses: satackey/action-docker-layer-caching@v0.0.8
-    continue-on-error: true
-  - uses: 'docker'
-    image: 'Dockerfile'
-    env:
-      HEAP_CACHE_DIR: ${{ inputs.heapCacheDir }}
-    args:
-      - ${{ inputs.args }}
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    HEAP_CACHE_DIR: ${{ inputs.heapCacheDir }}
+  args:
+    - ${{ inputs.args }}
