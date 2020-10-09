@@ -8,7 +8,8 @@ set -eo pipefail
 # begin substitued by the outer shell (that does not have the environment variables).
 /Isabelle2020/bin/isabelle env bash << 'EOC'
 if [ -n "$HEAP_CACHE_DIR" -a -d "$HEAP_CACHE_DIR" ]; then
-  cp -r "$HEAP_CACHE_DIR" "$ISABELLE_HEAPS"
+  mkdir -p "$ISABELLE_HEAPS"
+  cp -r "$HEAP_CACHE_DIR/*" "$ISABELLE_HEAPS"
 fi
 EOC
 
@@ -18,6 +19,7 @@ sh -c "/Isabelle2020/bin/isabelle $*"
 # Copy Heap Images from Local to Cache
 /Isabelle2020/bin/isabelle env bash << 'EOC'
 if [ -n "$HEAP_CACHE_DIR" -a -d "$ISABELLE_HEAPS" ]; then
+  mkdir -p "$HEAP_CACHE_DIR"
   cp -r "$ISABELLE_HEAPS/*" "$HEAP_CACHE_DIR"
 fi
 EOC
