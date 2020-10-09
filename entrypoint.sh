@@ -9,7 +9,7 @@ set -eo pipefail
 /Isabelle2020/bin/isabelle env bash << 'EOC'
 if [ -n "$HEAP_CACHE_DIR" -a -d "$HEAP_CACHE_DIR" ]; then
   mkdir -p "$ISABELLE_HEAPS"
-  cp -r "$HEAP_CACHE_DIR/*" "$ISABELLE_HEAPS"
+  cp -r "$HEAP_CACHE_DIR"/* "$ISABELLE_HEAPS"
 fi
 EOC
 
@@ -20,6 +20,6 @@ sh -c "/Isabelle2020/bin/isabelle $*"
 /Isabelle2020/bin/isabelle env bash << 'EOC'
 if [ -n "$HEAP_CACHE_DIR" -a -d "$ISABELLE_HEAPS" ]; then
   mkdir -p "$HEAP_CACHE_DIR"
-  cp -r "$ISABELLE_HEAPS/*" "$HEAP_CACHE_DIR"
+  cp -r "$ISABELLE_HEAPS"/* "$HEAP_CACHE_DIR"
 fi
 EOC
