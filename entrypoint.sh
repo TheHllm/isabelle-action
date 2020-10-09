@@ -18,6 +18,6 @@ sh -c "/Isabelle2020/bin/isabelle $*"
 # Copy Heap Images from Local to Cache
 /Isabelle2020/bin/isabelle env bash << 'EOC'
 if [ -n "$HEAP_CACHE_DIR" -a -d "$ISABELLE_HEAPS" ]; then
-  cp -r "$ISABELLE_HEAPS" "$HEAP_CACHE_DIR"
+  cp -r "$ISABELLE_HEAPS/*" "$HEAP_CACHE_DIR"
 fi
 EOC
