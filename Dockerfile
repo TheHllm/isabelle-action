@@ -5,7 +5,8 @@ FROM ubuntu
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update && \
   apt-get install -y curl less libfontconfig1 libgomp1 libwww-perl rlwrap unzip texlive-latex-recommended texlive-latex-extra texlive-lang-all && \
-  apt-get clean
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/
 
 RUN curl https://isabelle.in.tum.de/dist/Isabelle2020_linux.tar.gz > Isabelle2020_linux.tar.gz && \
   tar xzf Isabelle2020_linux.tar.gz && \
