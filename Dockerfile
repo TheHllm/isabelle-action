@@ -4,7 +4,7 @@ FROM ubuntu
 # packages
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y update && \
-  apt-get install -y curl less libfontconfig1 libgomp1 libwww-perl rlwrap unzip texlive-latex-recommended texlive-latex-extra texlive-lang-all && \
+  apt-get install -y curl less libfontconfig1 libgomp1 libwww-perl rlwrap unzip texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 
