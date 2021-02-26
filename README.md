@@ -10,5 +10,6 @@ docker build -t niedzejkob/isabelle-action:vX.Y .
 docker push niedzejkob/isabelle-action:vX.Y
 git commit
 git tag vX.Y
-git push --follow-tags
+git push
+git push --tags
 ```
