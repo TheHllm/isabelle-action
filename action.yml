@@ -9,7 +9,7 @@ inputs:
     required: false
 runs:
   using: 'docker'
-  image: 'docker://niedzejkob/isabelle-action:v1.6'
+  image: 'docker://niedzejkob/isabelle-action:v1.7'
   env:
     HEAP_CACHE_DIR: ${{ inputs.heapCacheDir }}
   args:
