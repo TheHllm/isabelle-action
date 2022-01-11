@@ -1,0 +1,19 @@
+on: [push]
+
+jobs:
+  test-action:
+    runs-on: ubuntu-latest
+    name: Ensure that Isabelle action works
+    strategy:
+      matrix:
+        isabelle_version: ["Isabelle2020", "Isabelle2021", "Isabelle2021-1"]
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Version check
+      id: isabelle
+      uses: ./
+      with:
+        version: ${{ matrix.isabelle_version }}
+        args: version
