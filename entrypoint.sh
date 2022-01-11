@@ -1,7 +1,6 @@
 #!/bin/sh -l
 
 ISABELLE_VERSION=$1
-shift
 
 cd /container
 echo "creating docker image with isabelle version: $ISABELLE_VERSION"
