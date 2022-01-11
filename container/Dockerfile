@@ -10,7 +10,7 @@ RUN apt-get -y update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 
-RUN curl https://isabelle.in.tum.de/dist/${isabelle_version}_linux.tar.gz > ${isabelle_version}_linux.tar.gz && \
+RUN curl https://isabelle.in.tum.de/website-${isabelle_version}/dist/${isabelle_version}_linux.tar.gz > ${isabelle_version}_linux.tar.gz && \
   tar xzf ${isabelle_version}_linux.tar.gz && \
   ${isabelle_version}/bin/isabelle build -v -o system_heaps -b HOL && \
   rm ${isabelle_version}_linux.tar.gz
