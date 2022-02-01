@@ -8,10 +8,10 @@ RUN apt-get -y update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/
 
-RUN curl https://isabelle.in.tum.de/dist/Isabelle2021_linux.tar.gz > Isabelle2021_linux.tar.gz && \
-  tar xzf Isabelle2021_linux.tar.gz && \
-  Isabelle2021/bin/isabelle build -v -o system_heaps -b HOL && \
-  rm Isabelle2021_linux.tar.gz
+RUN curl https://isabelle.in.tum.de/dist/Isabelle2021-1_linux.tar.gz > Isabelle2021-1_linux.tar.gz && \
+  tar xzf Isabelle2021-1_linux.tar.gz && \
+  Isabelle2021-1/bin/isabelle build -v -o system_heaps -b HOL && \
+  rm Isabelle2021-1_linux.tar.gz
 
 COPY entrypoint.sh /entrypoint.sh
 
