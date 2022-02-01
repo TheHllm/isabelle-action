@@ -7,15 +7,10 @@ inputs:
   heapCacheDir:
     description: 'path to save to/load from Isabelle session heap'
     required: false
-  version:
-    description: 'version of Isabelle to use'
-    required: false
-    default: Isabelle2021
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker://niedzejkob/isabelle-action:v1.8'
   env:
     HEAP_CACHE_DIR: ${{ inputs.heapCacheDir }}
   args:
-    - ${{ inputs.version }}
     - ${{ inputs.args }}

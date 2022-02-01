@@ -1,10 +1,25 @@
-#!/bin/sh -l
+#!/usr/bin/env bash
 
-ISABELLE_VERSION=$1
+set -eo pipefail
 
-cd /container
-echo "creating docker image with isabelle version: $ISABELLE_VERSION"
+# Copy Heap Images from Cache to Local
+# This command uses `isabelle env` for populating a new shell with Isabelle environment variables,
+# and 'EOC' flood the shell with the following commands, while preventing the variables from
+# begin substitued by the outer shell (that does not have the environment variables).
+/Isabelle2021/bin/isabelle env bash << 'EOC'
+if [ -n "$HEAP_CACHE_DIR" -a -d "$HEAP_CACHE_DIR" ]; then
+  mkdir -p "$ISABELLE_HEAPS"
+  cp -r "$HEAP_CACHE_DIR"/* "$ISABELLE_HEAPS"
+fi
+EOC
 
-# here we can make the construction of the image as customizable as we need
-# and if we need parameterizable values it is a matter of sending them as inputs
-docker build -t container --build-arg isabelle_version="$ISABELLE_VERSION" . && docker run -e HEAP_CACHE_DIR=${HEAP_CACHE_DIR} container ${@}
+# Run Isabelle
+sh -c "/Isabelle2021/bin/isabelle $*"
+
+# Copy Heap Images from Local to Cache
+/Isabelle2021/bin/isabelle env bash << 'EOC'
+if [ -n "$HEAP_CACHE_DIR" -a -d "$ISABELLE_HEAPS" ]; then
+  mkdir -p "$HEAP_CACHE_DIR"
+  cp -r "$ISABELLE_HEAPS"/* "$HEAP_CACHE_DIR"
+fi
+EOC

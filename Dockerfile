@@ -1,12 +1,18 @@
-# Container image that runs your code
-FROM alpine:latest
+# based on https://hub.docker.com/r/makarius/isabelle
+FROM ubuntu
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY container /container
+# packages
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get -y update && \
+  apt-get install -y curl less libfontconfig1 libgomp1 libwww-perl rlwrap unzip texlive-latex-recommended texlive-latex-extra texlive-fonts-extra texlive-lang-all && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/
+
+RUN curl https://isabelle.in.tum.de/dist/Isabelle2021_linux.tar.gz > Isabelle2021_linux.tar.gz && \
+  tar xzf Isabelle2021_linux.tar.gz && \
+  Isabelle2021/bin/isabelle build -v -o system_heaps -b HOL && \
+  rm Isabelle2021_linux.tar.gz
+
 COPY entrypoint.sh /entrypoint.sh
 
-RUN apk add --update --no-cache docker
-RUN ["chmod", "+x", "/entrypoint.sh"]
-
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
 ENTRYPOINT ["/entrypoint.sh"]
