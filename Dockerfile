@@ -1,5 +1,4 @@
-FROM texlive/texlive:latest
-# makarius/isabelle:Isabelle2022_X11_Latex
+FROM ubuntu
 
 # packages
 ENV DEBIAN_FRONTEND=noninteractive
