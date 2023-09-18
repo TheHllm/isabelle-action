@@ -9,7 +9,7 @@ inputs:
 #    required: false
 runs:
   using: 'docker'
-  image: 'makarius/isabelle:Isabelle2023'
+  image: 'docker://makarius/isabelle:Isabelle2023'
 #  env:
 #    HEAP_CACHE_DIR: ${{ inputs.heapCacheDir }}
   args:
