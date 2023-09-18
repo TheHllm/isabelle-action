@@ -18,4 +18,3 @@ runs:
     - '-d'
     - '.'
     - ${{ inputs.session }}
-  #entrypoint: '/home/isabelle/Isabelle/bin/isabelle'

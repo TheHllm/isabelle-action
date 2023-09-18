@@ -1,4 +1,4 @@
-FROM makarius/isabelle:Isabelle2023
+FROM makarius/isabelle:Isabelle2023_X11_Latex
 
 USER root
 
