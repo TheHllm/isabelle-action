@@ -11,5 +11,11 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://makarius/isabelle:Isabelle2023'
-  args: ['build', '-P', ${{ inputs.output }}, '-d', '.', ${{ inputs.session }}]
+  args:
+    - 'build'
+    - '-P'
+    - ${{ inputs.output }}
+    - '-d'
+    - '.'
+    - ${{ inputs.session }}
   entrypoint: '/home/isabelle/Isabelle/bin/isabelle'
