@@ -10,7 +10,7 @@ inputs:
     
 runs:
   using: 'docker'
-  image: 'docker://makarius/isabelle:Isabelle2023'
+  image: 'Dockerfile'
   args:
     - 'build'
     - '-P'
@@ -18,4 +18,4 @@ runs:
     - '-d'
     - '.'
     - ${{ inputs.session }}
-  entrypoint: '/home/isabelle/Isabelle/bin/isabelle'
+  #entrypoint: '/home/isabelle/Isabelle/bin/isabelle'
