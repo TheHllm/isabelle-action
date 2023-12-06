@@ -13,6 +13,10 @@ runs:
   image: 'Dockerfile'
   args:
     - 'build'
+    - '-o'
+    - 'document=pdf'
+    - '-o'
+    - 'document_variants=document:outline=/proof,/ML'
     - '-P'
     - ${{ inputs.output }}
     - '-d'
