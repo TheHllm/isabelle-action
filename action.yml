@@ -10,7 +10,7 @@ inputs:
     
 runs:
   using: 'docker'
-  image: 'hllm/isabelle-docker'
+  image: 'docker://hllm/isabelle-docker'
   args:
     - 'build'
     - '-o'
